@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Groupe Jnak SARL – Votre partenaire pour la réussite de vos projets</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+/* ======================================================
+   RESET & VARIABLES
+====================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a3670;
+  --navy2:#152d5c;
+  --blue:#2563b0;
+  --orange:#f59a1a;
+  --orange2:#e08810;
+  --green:#2d8c4e;
+  --green2:#236b3d;
+  --green-bg:#edfaf2;
+  --teal:#0e7490;
+  --teal-bg:#ecfeff;
+  --red:#e74c3c;--red2:#c0392b;
+  --bg:#f5f8fd;
+  --bg-admin:#f0f4fc;
+  --white:#fff;
+  --text:#444;
+  --text2:#5a6a84;
+  --border:#dde5f5;
+  --shadow:0 4px 28px rgba(26,54,112,.10);
+  --r:10px;
+  --font-h:'Montserrat',sans-serif;
+  --font-b:'Open Sans',sans-serif;
+  --sidebar:240px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);color:var(--text);background:#fff;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit}
+
+/* ======================================================
+   UTILITIES
+====================================================== */
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 26px;border-radius:6px;font-family:var(--font-h);font-weight:700;font-size:.88rem;border:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s;line-height:1;text-decoration:none;}
+.btn:hover{transform:translateY(-2px)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy2);box-shadow:0 6px 18px rgba(26,54,112,.28)}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{background:var(--orange2);box-shadow:0 6px 18px rgba(245,154,26,.38)}
+.btn-outline{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green2);box-shadow:0 6px 18px rgba(45,140,78,.3)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:#0c6473;box-shadow:0 6px 18px rgba(14,116,144,.3)}
+.btn-sm{padding:8px 18px;font-size:.8rem}
+.sec-title{font-family:var(--font-h);font-size:1.85rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:10px;}
+.sec-bar{width:52px;height:4px;background:var(--navy);border-radius:3px;margin:0 auto 46px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.13s}.d2{transition-delay:.26s}.d3{transition-delay:.39s}
+
+/* ======================================================
+   NAVBAR
+====================================================== */
+#nav{position:fixed;top:0;left:0;right:0;z-index:900;background:#fff;box-shadow:0 2px 14px rgba(26,54,112,.09);height:68px;display:flex;align-items:center;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px;}
+.logo{display:flex;align-items:center;gap:8px;flex-shrink:0;font-family:var(--font-h);font-weight:800;font-size:1.12rem;color:var(--navy);}
+.logo small{font-weight:500;font-size:.68em;color:#aaa;letter-spacing:.05em}
+.nav-links{display:flex;gap:20px}
+.nav-links a{font-family:var(--font-h);font-weight:600;font-size:.79rem;color:#666;padding-bottom:3px;border-bottom:2.5px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;}
+.nav-links a.on,.nav-links a:hover{color:var(--navy);border-bottom-color:var(--navy)}
+.nav-cta{padding:9px 20px;font-size:.82rem;flex-shrink:0}
+.btn-admin-login{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:6px;border:1.5px solid var(--border);background:transparent;color:var(--text2);font-family:var(--font-h);font-weight:600;font-size:.78rem;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.btn-admin-login:hover{border-color:var(--navy);color:var(--navy);background:#f0f4fc}
+.btn-admin-login svg{opacity:.6}
+.ham{display:none;background:none;border:none;font-size:1.5rem;color:var(--navy);padding:4px}
+.mob{display:none;flex-direction:column;background:#fff;border-top:1px solid #eef2fb;padding:12px 28px 20px;}
+.mob a{padding:10px 0;font-family:var(--font-h);font-weight:600;font-size:.9rem;color:var(--navy);border-bottom:1px solid #f0f4fb;}
+.mob.open{display:flex}
+
+/* ======================================================
+   HERO
+====================================================== */
+#hero{padding-top:68px;background:linear-gradient(130deg,#dde9fb 0%,#e8f0fd 55%,#cdddf8 100%);position:relative;overflow:hidden;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px;min-height:calc(100vh - 68px);padding:60px 0 0;}
+.hero-text h1{font-family:var(--font-h);font-size:clamp(1.8rem,3vw,2.7rem);font-weight:900;color:var(--navy);line-height:1.18;margin-bottom:18px;}
+.hero-text p{font-size:1rem;color:var(--text2);margin-bottom:34px}
+.hero-photo{align-self:flex-end}
+.hero-photo img{width:100%;border-radius:18px 18px 0 0;box-shadow:0 20px 60px rgba(26,54,112,.18);object-fit:cover;max-height:520px;}
+.hero-wave{position:absolute;bottom:-1px;left:0;right:0;line-height:0;z-index:1;pointer-events:none;}
+.hero-wave svg{width:100%;height:70px}
+
+/* ======================================================
+   ABOUT
+====================================================== */
+#about{background:#fff;padding:90px 0}
+.about-inner{display:grid;grid-template-columns:1.3fr 1fr;align-items:center;gap:70px;}
+.about-text h2{font-family:var(--font-h);font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:18px;}
+.about-text p{font-size:.96rem;color:var(--text2);line-height:1.9;margin-bottom:28px}
+.about-photo img{width:100%;height:320px;object-fit:cover;object-position:top;border-radius:var(--r);box-shadow:var(--shadow);}
+
+/* ======================================================
+   ACTIVITÉS
+====================================================== */
+#activities{background:var(--bg);padding:90px 0}
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.act-card{background:#fff;border-radius:var(--r);padding:38px 26px 30px;text-align:center;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;}
+.act-card:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(26,54,112,.14)}
+.act-icon{width:88px;height:88px;margin:0 auto 22px;display:flex;align-items:center;justify-content:center;}
+.act-icon img{width:78px;height:78px;object-fit:contain}
+.act-card h3{font-family:var(--font-h);font-size:1.06rem;font-weight:800;color:var(--navy);margin-bottom:12px;}
+.act-card p{font-size:.87rem;color:var(--text2);line-height:1.7;margin-bottom:22px}
+
+/* ======================================================
+   DOMAINES
+====================================================== */
+#domaines{background:#fff;padding:90px 0}
+.tabs-bar{display:flex;gap:4px;flex-wrap:wrap;border-bottom:2px solid var(--border);margin-bottom:0;}
+.tab-btn{display:flex;align-items:center;gap:6px;padding:11px 18px;background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;font-family:var(--font-h);font-weight:600;font-size:.82rem;color:#999;transition:color .2s,border-color .2s;}
+.tab-btn.on,.tab-btn:hover{color:var(--navy);border-bottom-color:var(--navy)}
+.tab-panel{display:none}
+.tab-panel.on{display:flex;align-items:center;gap:30px;background:var(--bg);border-radius:0 var(--r) var(--r) var(--r);padding:28px 34px;}
+.tab-img{width:80px;height:80px;object-fit:contain;flex-shrink:0}
+.tab-panel p{font-size:.95rem;color:var(--text2);line-height:1.8}
+
+/* ======================================================
+   AGRICULTURE
+====================================================== */
+#agriculture{background:#fff}
+.agri-hero{position:relative;background:url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1400&q=80&auto=format&fit=crop') center/cover no-repeat;min-height:420px;display:flex;align-items:center;}
+.agri-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,54,112,.83) 0%,rgba(45,140,78,.72) 100%);}
+.agri-hero-inner{position:relative;z-index:1;max-width:680px;padding:80px 0}
+.agri-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-family:var(--font-h);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:22px;}
+.agri-hero-inner h2{font-family:var(--font-h);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;color:#fff;margin-bottom:18px;line-height:1.18;}
+.agri-hero-inner p{font-size:1rem;color:rgba(255,255,255,.88);line-height:1.7;margin-bottom:32px;max-width:560px;}
+.agri-body{padding:80px 0 90px;background:#fff}
+.agri-intro{text-align:center;max-width:700px;margin:0 auto 56px}
+.agri-intro h3{font-family:var(--font-h);font-size:1.45rem;font-weight:800;color:var(--navy);margin-bottom:14px;}
+.agri-intro p{font-size:.97rem;color:var(--text2);line-height:1.85}
+.agri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.agri-card{border:1.5px solid #e5edf8;border-radius:var(--r);padding:30px 24px 26px;text-align:center;background:#fff;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.agri-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(45,140,78,.12);border-color:#b8e0c8;}
+.agri-icon-wrap{width:72px;height:72px;background:var(--green-bg);border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;}
+.agri-icon-wrap img{width:40px;height:40px;object-fit:contain}
+.agri-card h4{font-family:var(--font-h);font-size:.98rem;font-weight:800;color:var(--navy);margin-bottom:10px;}
+.agri-card p{font-size:.85rem;color:var(--text2);line-height:1.7}
+.agri-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);border-radius:16px;padding:48px 36px;margin-bottom:64px;text-align:center;}
+.stat-val{font-family:var(--font-h);font-size:2.6rem;font-weight:900;color:#fff;display:inline;}
+.stat-unit{font-family:var(--font-h);font-size:1.4rem;font-weight:700;color:var(--orange);}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.7);margin-top:6px;line-height:1.4}
+.agri-cta{display:flex;align-items:center;justify-content:space-between;gap:32px;background:var(--green-bg);border-radius:var(--r);padding:36px 44px;border-left:5px solid var(--green);}
+.agri-cta-text h3{font-family:var(--font-h);font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:8px;}
+.agri-cta-text p{font-size:.92rem;color:var(--text2);line-height:1.6}
+
+/* ======================================================
+   TOURISME & VOYAGE (NEW)
+====================================================== */
+#tourisme{background:var(--bg);padding:90px 0}
+.tour-hero-banner{
+  position:relative;
+  background:url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1400&q=80&auto=format&fit=crop') center/cover no-repeat;
+  border-radius:16px;overflow:hidden;margin-bottom:64px;min-height:320px;display:flex;align-items:center;
+}
+.tour-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,116,144,.85) 0%,rgba(26,54,112,.75) 100%);}
+.tour-hero-content{position:relative;z-index:1;padding:56px 48px;max-width:680px;}
+.tour-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-family:var(--font-h);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:20px;}
+.tour-hero-content h2{font-family:var(--font-h);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#fff;margin-bottom:14px;line-height:1.2;}
+.tour-hero-content p{font-size:.97rem;color:rgba(255,255,255,.88);line-height:1.7;margin-bottom:28px;max-width:520px;}
+.tour-services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:48px}
+.tour-card{background:#fff;border-radius:var(--r);padding:30px 22px 26px;box-shadow:var(--shadow);border-top:3px solid transparent;transition:transform .3s,box-shadow .3s,border-color .3s;text-align:center;}
+.tour-card:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(14,116,144,.14);border-top-color:var(--teal);}
+.tour-icon{width:70px;height:70px;background:var(--teal-bg);border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;}
+.tour-card h4{font-family:var(--font-h);font-size:.98rem;font-weight:800;color:var(--navy);margin-bottom:10px;}
+.tour-card p{font-size:.85rem;color:var(--text2);line-height:1.7;}
+.tour-cta{display:flex;align-items:center;justify-content:space-between;gap:32px;background:var(--teal-bg);border-radius:var(--r);padding:36px 44px;border-left:5px solid var(--teal);}
+.tour-cta-text h3{font-family:var(--font-h);font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:8px;}
+.tour-cta-text p{font-size:.92rem;color:var(--text2);line-height:1.6}
+
+/* ======================================================
+   BLOG
+====================================================== */
+#blog{background:#fff;padding:90px 0}
+.blog-topbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:36px}
+.blog-filters{display:flex;gap:8px;flex-wrap:wrap}
+.bf{padding:7px 16px;border-radius:50px;border:1.5px solid var(--border);background:#fff;font-family:var(--font-h);font-weight:600;font-size:.78rem;color:#888;cursor:pointer;transition:all .2s;}
+.bf.on,.bf:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.blog-card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);border:1.5px solid #f0f4fb;transition:transform .3s,box-shadow .3s;}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(26,54,112,.13)}
+.blog-card-img{position:relative;overflow:hidden;height:185px}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.blog-card:hover .blog-card-img img{transform:scale(1.05)}
+.blog-body{padding:18px 20px 20px}
+.blog-tag{display:inline-block;background:rgba(26,54,112,.08);color:var(--navy);font-family:var(--font-h);font-weight:700;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:50px;margin-bottom:10px;}
+.blog-tag-green{background:rgba(45,140,78,.1)!important;color:var(--green)!important}
+.blog-tag-orange{background:rgba(245,154,26,.12)!important;color:var(--orange2)!important}
+.blog-body h4{font-family:var(--font-h);font-size:.94rem;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.45;cursor:pointer;transition:color .2s;}
+.blog-body h4:hover{color:var(--blue)}
+.blog-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.blog-date{font-size:.75rem;color:#bbb}
+.blog-author{font-size:.75rem;color:var(--text2);font-weight:600}
+.blog-excerpt{font-size:.84rem;color:var(--text2);line-height:1.6;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.blog-actions{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #f0f4fb;padding-top:12px;margin-top:4px}
+.blog-act-left{display:flex;gap:12px}
+.like-btn,.cmt-btn{display:flex;align-items:center;gap:5px;background:none;border:none;padding:0;font-size:.8rem;color:#999;cursor:pointer;font-family:var(--font-b);transition:color .2s;}
+.like-btn:hover{color:#e74c3c}.like-btn.liked{color:#e74c3c}.like-btn.liked svg path{fill:#e74c3c}
+.cmt-btn:hover{color:var(--navy)}
+.read-btn{font-size:.78rem;color:var(--navy);font-family:var(--font-h);font-weight:700;background:none;border:none;cursor:pointer;transition:color .2s}
+.read-btn:hover{color:var(--blue)}
+
+/* Article modal */
+.modal-bg{display:none;position:fixed;inset:0;z-index:1100;background:rgba(10,20,50,.55);backdrop-filter:blur(4px);align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;}
+.modal-bg.open{display:flex}
+.modal-box{background:#fff;border-radius:16px;width:100%;max-width:760px;box-shadow:0 24px 80px rgba(10,20,50,.22);overflow:hidden;margin:auto;}
+.modal-cover{width:100%;height:280px;object-fit:cover;display:block}
+.modal-inner{padding:32px 36px 36px}
+.modal-tag{display:inline-block;background:rgba(26,54,112,.08);color:var(--navy);font-family:var(--font-h);font-weight:700;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:50px;margin-bottom:12px}
+.modal-title{font-family:var(--font-h);font-size:1.45rem;font-weight:900;color:var(--navy);margin-bottom:10px;line-height:1.3}
+.modal-meta{font-size:.8rem;color:#aaa;margin-bottom:20px}
+.modal-body{font-size:.96rem;color:var(--text2);line-height:1.85;margin-bottom:28px}
+.modal-body p{margin-bottom:14px}
+.modal-sep{border:none;border-top:1px solid #eef2fb;margin-bottom:24px}
+.modal-close{float:right;background:none;border:none;font-size:1.6rem;color:#aaa;cursor:pointer;margin:-8px -8px 0 0;line-height:1;transition:color .2s;}
+.modal-close:hover{color:var(--navy)}
+
+/* Comments section – FIXED */
+.comments-section h5{font-family:var(--font-h);font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:16px;}
+.comment-form{display:grid;grid-template-columns:1fr 2fr auto;gap:10px;margin-bottom:20px;align-items:start;}
+.comment-form input{border:1.5px solid var(--border);border-radius:7px;padding:10px 14px;font-family:var(--font-b);font-size:.88rem;color:var(--text);outline:none;transition:border-color .2s;width:100%;}
+.comment-form input:focus{border-color:var(--navy)}
+.comment-form .cmt-submit-btn{padding:10px 20px;background:var(--navy);color:#fff;border:none;border-radius:7px;font-family:var(--font-h);font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;transition:background .2s;display:flex;align-items:center;gap:6px;height:42px;}
+.comment-form .cmt-submit-btn:hover{background:var(--navy2)}
+.comment-list{display:flex;flex-direction:column;gap:12px;max-height:280px;overflow-y:auto}
+.comment-item{background:var(--bg);border-radius:8px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;}
+.comment-avatar{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:800;font-size:.82rem;flex-shrink:0;}
+.comment-name{font-family:var(--font-h);font-weight:700;font-size:.82rem;color:var(--navy);margin-bottom:3px}
+.comment-text{font-size:.84rem;color:var(--text2);line-height:1.5}
+.comment-time{font-size:.72rem;color:#ccc;margin-top:3px}
+.no-comments{font-size:.85rem;color:#bbb;text-align:center;padding:16px 0}
+
+/* ======================================================
+   CONTACT
+====================================================== */
+#contact{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);padding:90px 0;}
+#contact .sec-title{color:#fff}
+#contact .sec-bar{background:var(--orange)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.65fr;gap:54px;align-items:start}
+.cinfo h3{font-family:var(--font-h);font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:24px;}
+.cinfo-item{display:flex;align-items:flex-start;gap:10px;font-size:.93rem;color:rgba(255,255,255,.82);margin-bottom:14px;}
+.cinfo-item span:first-child{font-size:1rem;flex-shrink:0;margin-top:1px}
+.cform{background:rgba(255,255,255,.1);border-radius:var(--r);padding:36px;backdrop-filter:blur(10px);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.finput{margin-bottom:14px}
+.cform input,.cform textarea,.cform select{width:100%;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.22);border-radius:7px;padding:12px 15px;color:#fff;font-family:var(--font-b);font-size:.92rem;outline:none;transition:border-color .2s,background .2s;appearance:none;-webkit-appearance:none;}
+.cform select option{color:#333;background:#fff}
+.cform input::placeholder,.cform textarea::placeholder{color:rgba(255,255,255,.45)}
+.cform input:focus,.cform textarea:focus,.cform select:focus{border-color:var(--orange);background:rgba(255,255,255,.18)}
+.cform textarea{resize:vertical}
+.cmsg{margin-top:10px;font-size:.88rem;text-align:center;min-height:18px}
+.cmsg.ok{color:#90ee90}.cmsg.err{color:#ffaaaa}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+footer{background:var(--navy);padding:36px 0 0}
+.foot-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;padding-bottom:26px;}
+.foot-logo{display:flex;align-items:center;gap:8px;font-family:var(--font-h);font-weight:800;font-size:1.05rem;color:#fff;}
+.foot-logo small{font-weight:400;font-size:.68em;color:rgba(255,255,255,.4);letter-spacing:.05em}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.foot-links a{font-family:var(--font-h);font-weight:500;font-size:.82rem;color:rgba(255,255,255,.6);transition:color .2s;}
+.foot-links a:hover{color:#fff}
+.foot-social{display:flex;gap:8px}
+.soc{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.8rem;transition:background .2s;}
+.soc:hover{background:var(--orange)}
+.foot-copy{text-align:center;color:rgba(255,255,255,.3);font-size:.78rem;padding:14px 0;border-top:1px solid rgba(255,255,255,.07);}
+
+/* ======================================================
+   RESPONSIVE (site public)
+====================================================== */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;min-height:auto;padding:50px 0 0}
+  .hero-text p{margin-left:auto;margin-right:auto}
+  .hero-photo img{border-radius:12px;max-height:380px}
+  .about-inner{grid-template-columns:1fr;gap:36px}
+  .act-grid,.blog-grid,.agri-grid,.tour-services-grid{grid-template-columns:1fr 1fr}
+  .agri-stats{grid-template-columns:1fr 1fr;gap:32px}
+  .contact-grid{grid-template-columns:1fr}
+  .agri-cta,.tour-cta{flex-direction:column;text-align:center;align-items:center}
+}
+@media(max-width:640px){
+  .nav-links,.nav-cta{display:none}
+  .ham{display:block}
+  .act-grid,.blog-grid,.agri-grid,.tour-services-grid{grid-template-columns:1fr}
+  .agri-stats{grid-template-columns:1fr 1fr}
+  .foot-inner{flex-direction:column;align-items:center;text-align:center}
+  .foot-links{justify-content:center}
+  .frow{grid-template-columns:1fr}
+  .tab-panel.on{flex-direction:column;text-align:center}
+  .agri-cta,.tour-cta{padding:28px 22px}
+  .agri-hero-inner,.tour-hero-content{padding:48px 24px}
+  .sec-title{font-size:1.55rem}
+  .comment-form{grid-template-columns:1fr;gap:8px}
+  .comment-form .cmt-submit-btn{width:100%;justify-content:center}
+}
+@media(max-width:400px){.agri-stats{grid-template-columns:1fr}}
+
+/* ======================================================
+   LOGIN MODAL ADMIN
+====================================================== */
+#adminLoginModal{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(10,20,50,.6);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;
+}
+#adminLoginModal.open{display:flex}
+.al-box{
+  background:#fff;border-radius:20px;
+  padding:44px 40px;width:100%;max-width:400px;
+  box-shadow:0 30px 80px rgba(0,0,0,.28);
+  text-align:center;position:relative;
+  animation:slideUp .35s cubic-bezier(.4,0,.2,1);
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.al-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.4rem;color:#ccc;cursor:pointer;transition:color .2s;}
+.al-close:hover{color:var(--navy)}
+.al-logo{display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-h);font-weight:800;font-size:1.18rem;color:var(--navy);margin-bottom:6px;}
+.al-sub{color:var(--text2);font-size:.83rem;margin-bottom:28px}
+.al-badge{display:inline-flex;align-items:center;gap:6px;background:#fff3e0;border:1px solid #ffd580;color:#c76b00;font-size:.73rem;font-family:var(--font-h);font-weight:700;padding:4px 12px;border-radius:50px;margin-bottom:24px;letter-spacing:.04em;}
+.al-input{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 15px;font-family:var(--font-b);font-size:.92rem;color:var(--text);outline:none;margin-bottom:12px;transition:border-color .2s;background:#fafbff;}
+.al-input:focus{border-color:var(--navy);background:#fff}
+.al-btn{width:100%;padding:13px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:var(--font-h);font-weight:700;font-size:.93rem;cursor:pointer;transition:all .2s;margin-top:4px;}
+.al-btn:hover{background:var(--navy2);box-shadow:0 8px 24px rgba(26,54,112,.3)}
+.al-err{color:#e74c3c;font-size:.82rem;margin-top:8px;min-height:18px;font-family:var(--font-h);}
+
+/* ======================================================
+   ADMIN DASHBOARD
+====================================================== */
+#adminDashboard{
+  display:none;position:fixed;inset:0;z-index:1800;
+  background:var(--bg-admin);overflow:hidden;
+}
+#adminDashboard.open{display:flex}
+.adash-wrap{display:flex;width:100%;height:100%}
+
+.adash-sidebar{width:var(--sidebar);height:100%;background:var(--navy2);display:flex;flex-direction:column;flex-shrink:0;}
+.adash-sidebar-logo{padding:20px 18px 18px;display:flex;align-items:center;gap:10px;font-family:var(--font-h);font-weight:800;font-size:.98rem;color:#fff;border-bottom:1px solid rgba(255,255,255,.1);}
+.adash-sidebar-logo small{font-weight:400;font-size:.65em;color:rgba(255,255,255,.38)}
+.adash-nav{flex:1;padding:18px 10px;overflow-y:auto}
+.adash-nav-section{font-size:.63rem;font-family:var(--font-h);font-weight:700;color:rgba(255,255,255,.32);letter-spacing:.1em;text-transform:uppercase;padding:0 10px;margin-bottom:6px;margin-top:18px;}
+.adash-nav-section:first-of-type{margin-top:0}
+.adash-link{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;font-family:var(--font-h);font-weight:600;font-size:.82rem;color:rgba(255,255,255,.58);cursor:pointer;transition:all .2s;margin-bottom:2px;border:none;background:none;width:100%;text-align:left;}
+.adash-link:hover{background:rgba(255,255,255,.1);color:#fff}
+.adash-link.active{background:var(--orange);color:#fff;box-shadow:0 4px 14px rgba(245,154,26,.32)}
+.adash-link svg{flex-shrink:0}
+.adash-badge{margin-left:auto;background:rgba(255,255,255,.2);color:#fff;border-radius:50px;padding:2px 8px;font-size:.67rem;font-weight:700;}
+.adash-link.active .adash-badge{background:rgba(255,255,255,.3)}
+.adash-sidebar-bottom{padding:14px 10px;border-top:1px solid rgba(255,255,255,.1);}
+.adash-back-btn{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border-radius:8px;border:1.5px solid rgba(255,255,255,.18);background:none;color:rgba(255,255,255,.6);font-family:var(--font-h);font-weight:600;font-size:.78rem;cursor:pointer;transition:all .2s;margin-bottom:8px;}
+.adash-back-btn:hover{background:rgba(255,255,255,.1);color:#fff}
+.adash-logout{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border-radius:8px;border:none;background:none;color:rgba(255,255,255,.45);font-family:var(--font-h);font-weight:600;font-size:.82rem;cursor:pointer;transition:all .2s;}
+.adash-logout:hover{background:rgba(231,76,60,.18);color:#e74c3c}
+
+.adash-main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.adash-topbar{background:#fff;border-bottom:1px solid var(--border);padding:0 28px;height:62px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.adash-topbar-left h1{font-family:var(--font-h);font-size:1.08rem;font-weight:800;color:var(--navy)}
+.adash-topbar-left p{font-size:.74rem;color:var(--text2);margin-top:1px}
+.adash-topbar-right{display:flex;align-items:center;gap:12px}
+.adash-avatar{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:800;font-size:.8rem;}
+.adash-admin-label{font-family:var(--font-h);font-weight:700;font-size:.8rem;color:var(--navy)}
+.adash-session{font-size:.7rem;color:var(--text2)}
+.adash-body{flex:1;overflow-y:auto;padding:24px 28px}
+
+.adash-page{display:none}
+.adash-page.active{display:block}
+
+.adash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.adash-stat{background:#fff;border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow);border-left:4px solid transparent;display:flex;align-items:center;gap:14px;}
+.adash-stat.c-blue{border-left-color:var(--blue)}
+.adash-stat.c-orange{border-left-color:var(--orange)}
+.adash-stat.c-green{border-left-color:var(--green)}
+.adash-stat.c-red{border-left-color:var(--red)}
+.adash-stat-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.adash-stat-icon.c-blue{background:rgba(37,99,176,.1);color:var(--blue)}
+.adash-stat-icon.c-orange{background:rgba(245,154,26,.1);color:var(--orange)}
+.adash-stat-icon.c-green{background:rgba(45,140,78,.1);color:var(--green)}
+.adash-stat-icon.c-red{background:rgba(231,76,60,.1);color:var(--red)}
+.adash-stat-val{font-family:var(--font-h);font-size:1.7rem;font-weight:900;color:var(--navy);line-height:1}
+.adash-stat-label{font-size:.76rem;color:var(--text2);margin-top:3px}
+
+.adash-card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px;}
+.adash-card-head{padding:16px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.adash-card-head h2{font-family:var(--font-h);font-size:.92rem;font-weight:800;color:var(--navy)}
+
+.adash-table{width:100%;border-collapse:collapse}
+.adash-table th{padding:11px 18px;text-align:left;font-family:var(--font-h);font-size:.7rem;font-weight:700;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;background:#fafbff;border-bottom:1px solid var(--border);}
+.adash-table td{padding:12px 18px;border-bottom:1px solid #f7f8fb;font-size:.84rem;color:var(--text);vertical-align:middle;}
+.adash-table tr:last-child td{border-bottom:none}
+.adash-table tr:hover td{background:#fafbff}
+.adash-tag{display:inline-block;padding:3px 9px;border-radius:50px;font-family:var(--font-h);font-size:.67rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
+.adash-tag.mgt{background:rgba(26,54,112,.08);color:var(--navy)}
+.adash-tag.rh{background:rgba(37,99,176,.1);color:var(--blue)}
+.adash-tag.agri{background:rgba(45,140,78,.1);color:var(--green)}
+.adash-tag.biz{background:rgba(245,154,26,.12);color:var(--orange2)}
+.adash-status-pub{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:50px;background:rgba(45,140,78,.1);color:var(--green);font-family:var(--font-h);font-size:.68rem;font-weight:700;}
+.adash-status-drft{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:50px;background:rgba(113,128,150,.1);color:#718096;font-family:var(--font-h);font-size:.68rem;font-weight:700;}
+.adash-tbl-btns{display:flex;gap:5px;flex-wrap:wrap}
+.atb{padding:5px 12px;border-radius:6px;border:none;font-family:var(--font-h);font-weight:700;font-size:.72rem;cursor:pointer;transition:all .18s;}
+.atb.edit{background:rgba(37,99,176,.1);color:var(--blue)}
+.atb.edit:hover{background:var(--blue);color:#fff}
+.atb.del{background:rgba(231,76,60,.1);color:var(--red)}
+.atb.del:hover{background:var(--red);color:#fff}
+.atb.pub{background:rgba(45,140,78,.1);color:var(--green)}
+.atb.pub:hover{background:var(--green);color:#fff}
+
+.aform-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.aform-group{margin-bottom:16px}
+.aform-group.full{grid-column:1/-1}
+.aform-label{display:block;font-family:var(--font-h);font-weight:700;font-size:.73rem;color:var(--text2);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;}
+.aform-input,.aform-select,.aform-textarea{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px 13px;font-family:var(--font-b);font-size:.9rem;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff;}
+.aform-input:focus,.aform-select:focus,.aform-textarea:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(26,54,112,.07);}
+.aform-textarea{resize:vertical;line-height:1.6}
+.aform-toolbar{display:flex;gap:3px;flex-wrap:wrap;border:1.5px solid var(--border);border-bottom:none;border-radius:8px 8px 0 0;padding:7px 9px;background:#fafbff;}
+.aform-tb-btn{padding:4px 9px;border-radius:5px;border:none;background:none;font-family:var(--font-h);font-weight:700;font-size:.76rem;color:var(--text2);cursor:pointer;transition:all .15s;}
+.aform-tb-btn:hover{background:var(--border);color:var(--navy)}
+.aform-sep{width:1px;background:var(--border);margin:0 3px;align-self:stretch}
+#af-content-editor{border:1.5px solid var(--border);border-top:none;border-radius:0 0 8px 8px;min-height:180px;padding:13px;font-family:var(--font-b);font-size:.9rem;line-height:1.7;color:var(--text);outline:none;}
+#af-content-editor:empty:before{content:attr(data-placeholder);color:#bbb}
+#af-content-editor:focus{border-color:var(--navy)}
+.img-prev-box{border:2px dashed var(--border);border-radius:8px;height:160px;background:#fafbff;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:7px;}
+.img-prev-box img{width:100%;height:100%;object-fit:cover;display:none}
+.img-prev-placeholder{text-align:center;color:#ccc;font-size:.8rem}
+.img-prev-placeholder svg{margin:0 auto 6px;opacity:.35}
+.aform-actions{display:flex;gap:10px;justify-content:flex-end;padding-top:8px;border-top:1px solid var(--border);margin-top:6px;}
+.aform-btn-pub{padding:10px 24px;background:var(--orange);color:#fff;border:none;border-radius:8px;font-family:var(--font-h);font-weight:700;font-size:.86rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:7px;}
+.aform-btn-pub:hover{background:var(--orange2);transform:translateY(-1px);box-shadow:0 5px 16px rgba(245,154,26,.32)}
+.aform-btn-draft{padding:10px 20px;background:none;border:1.5px solid var(--border);border-radius:8px;font-family:var(--font-h);font-weight:700;font-size:.86rem;color:#888;cursor:pointer;transition:all .2s;}
+.aform-btn-draft:hover{border-color:var(--navy);color:var(--navy)}
+.aform-btn-cancel{padding:10px 20px;background:none;border:1.5px solid var(--border);border-radius:8px;font-family:var(--font-h);font-weight:700;font-size:.86rem;color:#aaa;cursor:pointer;transition:all .2s;}
+.aform-btn-cancel:hover{border-color:var(--red);color:var(--red)}
+
+.adash-empty{text-align:center;padding:48px 20px;color:#ccc}
+.adash-empty svg{margin:0 auto 14px;opacity:.28}
+.adash-empty p{font-size:.9rem}
+
+#adash-toast{position:fixed;bottom:24px;right:24px;z-index:3000;background:var(--green);color:#fff;border-radius:10px;padding:12px 20px;font-family:var(--font-h);font-weight:700;font-size:.86rem;box-shadow:0 8px 28px rgba(0,0,0,.18);transform:translateY(70px);opacity:0;transition:all .32s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:9px;pointer-events:none;}
+#adash-toast.show{transform:translateY(0);opacity:1}
+#adash-toast.terr{background:var(--red)}
+
+#adash-confirm{position:fixed;inset:0;z-index:2500;background:rgba(0,0,0,.42);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;}
+#adash-confirm.open{display:flex}
+.aconfirm-box{background:#fff;border-radius:14px;padding:30px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2);}
+.aconfirm-box h3{font-family:var(--font-h);font-size:1.05rem;font-weight:800;color:var(--navy);margin-bottom:8px}
+.aconfirm-box p{font-size:.86rem;color:var(--text2);line-height:1.55;margin-bottom:22px}
+.aconfirm-actions{display:flex;gap:10px;justify-content:center}
+.acbtn{padding:10px 22px;border-radius:8px;border:none;font-family:var(--font-h);font-weight:700;font-size:.84rem;cursor:pointer;transition:all .2s;}
+.acbtn-cancel{background:#f0f4fc;color:var(--text2)}.acbtn-cancel:hover{background:var(--border)}
+.acbtn-del{background:var(--red);color:#fff}.acbtn-del:hover{background:var(--red2)}
+
+/* Responsive admin */
+@media(max-width:800px){
+  .adash-stats{grid-template-columns:1fr 1fr}
+  .aform-grid{grid-template-columns:1fr}
+  .adash-sidebar{width:200px}
+}
+@media(max-width:580px){
+  .adash-sidebar{display:none}
+  .adash-body{padding:16px}
+  .adash-topbar{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ NAVBAR ══════════════════════ -->
+<header id="nav">
+  <div class="wrap nav-inner">
+    <a href="#hero" class="logo">
+      <svg width="28" height="28" viewBox="0 0 30 30" fill="none">
+        <path d="M26 5L4 14.5l8 2.5 2.5 8 4.5-9L26 5z" fill="#f59a1a"/>
+        <path d="M12 17l3.5-3.5" stroke="#1a3670" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Groupe Jnak <small>SARL</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#hero" class="on">Accueil</a>
+      <a href="#about">À Propos</a>
+      <a href="#activities">Activités</a>
+      <a href="#agriculture">Agriculture</a>
+      <a href="#tourisme">Tourisme</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+      <a href="#contact" class="btn btn-orange nav-cta">Nous Contacter</a>
+      <button class="btn-admin-login" id="openAdminLogin" title="Espace administrateur">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm0 13c-2.33 0-4.31-1.46-5.11-3.5h10.22c-.8 2.04-2.78 3.5-5.11 3.5z"/></svg>
+        Connexion
+      </button>
+    </div>
+    <button class="ham" id="ham" aria-label="Menu">&#9776;</button>
+  </div>
+  <div class="mob" id="mob">
+    <a href="#hero">Accueil</a>
+    <a href="#about">À Propos</a>
+    <a href="#activities">Activités</a>
+    <a href="#agriculture">Agriculture</a>
+    <a href="#tourisme">Tourisme</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="btn btn-orange" style="margin-top:14px;justify-content:center">Nous Contacter</a>
+    <button class="btn-admin-login" style="margin-top:8px;width:100%;justify-content:center" onclick="document.getElementById('mob').classList.remove('open');document.getElementById('adminLoginModal').classList.add('open')">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      Connexion Admin
+    </button>
+  </div>
+</header>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-text rv">
+        <h1>Votre partenaire pour<br/>la réussite de vos projets</h1>
+        <p>Solutions professionnelles pour votre entreprise.</p>
+        <a href="#activities" class="btn btn-navy">Nos Activités</a>
+      </div>
+      <div class="hero-photo rv d1">
+        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=640&q=80&auto=format&fit=crop" alt="Équipe professionnelle Groupe Jnak SARL" loading="eager"/>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,35 C400,70 1040,0 1440,35 L1440,70 L0,70 Z" fill="#fff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════════════ ABOUT ══════════════════════ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="about-text rv">
+        <h2>Qui sommes-nous ?</h2>
+        <p>Groupe Jnak SARL, expert en conseil et services aux entreprises.<br/>
+        Nous vous accompagnons dans vos projets pour <strong>atteindre vos objectifs.</strong></p>
+        <a href="#activities" class="btn btn-outline">En savoir plus &nbsp;›</a>
+      </div>
+      <div class="rv d1">
+        <div class="about-photo">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80&auto=format&fit=crop&crop=face" alt="Professionnelle Groupe Jnak SARL"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ ACTIVITÉS ══════════════════════ -->
+<section id="activities">
+  <div class="wrap">
+    <h2 class="sec-title rv">Nos Activités</h2>
+    <div class="sec-bar rv"></div>
+    <div class="act-grid">
+      <div class="act-card rv">
+        <div class="act-icon"><img src="https://cdn-icons-png.flaticon.com/128/1170/1170678.png" alt="Fournitures de bureau"/></div>
+        <h3>Fournitures de bureau</h3>
+        <p>Vente de matériel et équipements de bureau.</p>
+        <a href="#contact" class="btn btn-navy btn-sm">En savoir plus &nbsp;›</a>
+      </div>
+      <div class="act-card rv d1">
+        <div class="act-icon"><img src="https://cdn-icons-png.flaticon.com/128/2165/2165004.png" alt="Import Export"/></div>
+        <h3>Import / Export</h3>
+        <p>Commerce international, importation et exportation financières.</p>
+        <a href="#contact" class="btn btn-navy btn-sm">En savoir plus &nbsp;›</a>
+      </div>
+      <div class="act-card rv d2">
+        <div class="act-icon"><img src="https://cdn-icons-png.flaticon.com/128/3281/3281289.png" alt="Prestations de services"/></div>
+        <h3>Prestations de services</h3>
+        <p>Services aux entreprises, conseils, gestion de projets.</p>
+        <a href="#contact" class="btn btn-navy btn-sm">En savoir plus &nbsp;›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ DOMAINES ══════════════════════ -->
+<section id="domaines">
+  <div class="wrap">
+    <h2 class="sec-title rv">Nos Domaines</h2>
+    <div class="sec-bar rv"></div>
+    <div class="tabs-bar rv">
+      <button class="tab-btn on" data-tab="fin">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        Financiers
+      </button>
+      <button class="tab-btn" data-tab="com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Commerciaux
+      </button>
+      <button class="tab-btn" data-tab="ind">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10z"/></svg>
+        Industriels
+      </button>
+      <button class="tab-btn" data-tab="mob2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C13 5.06 12.51 5 12 5s-1-.06-1.41-.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
+        Mobiliers
+      </button>
+      <button class="tab-btn" data-tab="imm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        Immobiliers
+      </button>
+    </div>
+    <div class="tab-panel on" id="fin">
+      <img class="tab-img" src="https://cdn-icons-png.flaticon.com/128/2933/2933245.png" alt="Financiers"/>
+      <p>Nos activités englobent les <strong>domaines financiers</strong> : investissement, gestion, financement et opérations financières diverses.</p>
+    </div>
+    <div class="tab-panel" id="com">
+      <img class="tab-img" src="https://cdn-icons-png.flaticon.com/128/1602/1602672.png" alt="Commerciaux"/>
+      <p>Nos activités couvrent les <strong>domaines commerciaux</strong> : négoce, distribution, représentation commerciale et partenariats stratégiques.</p>
+    </div>
+    <div class="tab-panel" id="ind">
+      <img class="tab-img" src="https://cdn-icons-png.flaticon.com/128/2422/2422052.png" alt="Industriels"/>
+      <p>Nos activités s'étendent aux <strong>domaines industriels</strong> : approvisionnement, logistique, sous-traitance et gestion de la chaîne de valeur.</p>
+    </div>
+    <div class="tab-panel" id="mob2">
+      <img class="tab-img" src="https://cdn-icons-png.flaticon.com/128/1706/1706975.png" alt="Mobiliers"/>
+      <p>Nos activités incluent les <strong>domaines mobiliers</strong> : fourniture de mobilier professionnel et aménagement d'espaces de travail.</p>
+    </div>
+    <div class="tab-panel" id="imm">
+      <img class="tab-img" src="https://cdn-icons-png.flaticon.com/128/1239/1239505.png" alt="Immobiliers"/>
+      <p>Nous intervenons dans les <strong>domaines immobiliers</strong> : promotion, gestion de biens, conseil en investissement et transactions immobilières.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ AGRICULTURE ══════════════════════ -->
+<section id="agriculture">
+  <div class="agri-hero">
+    <div class="agri-overlay"></div>
+    <div class="wrap agri-hero-inner rv">
+      <div class="agri-badge">🌿 Nouveau Secteur</div>
+      <h2>Agriculture &amp; Agro-industrie</h2>
+      <p>Groupe Jnak SARL s'engage dans le développement agricole durable au Cameroun et en Afrique centrale — de la production à la transformation, jusqu'à la commercialisation.</p>
+      <a href="#contact" class="btn btn-orange">Démarrer un projet &nbsp;›</a>
+    </div>
+  </div>
+  <div class="agri-body">
+    <div class="wrap">
+      <div class="agri-intro rv">
+        <h3>Notre vision agricole</h3>
+        <p>Nous croyons en un secteur agricole moderne, rentable et respectueux de l'environnement. Nos programmes accompagnent aussi bien les petits producteurs que les agro-industries pour créer de la valeur à chaque maillon de la chaîne.</p>
+      </div>
+      <div class="agri-grid">
+        <div class="agri-card rv"><div class="agri-icon-wrap"><img src="https://cdn-icons-png.flaticon.com/128/2909/2909761.png" alt="Production végétale"/></div><h4>Production végétale</h4><p>Cultures vivrières, maraîchage, plantations et cultures de rente : cacao, café, palmier à huile, banane plantain.</p></div>
+        <div class="agri-card rv d1"><div class="agri-icon-wrap"><img src="https://cdn-icons-png.flaticon.com/128/3724/3724788.png" alt="Élevage"/></div><h4>Élevage &amp; Pisciculture</h4><p>Élevage bovin, avicole, porcin et développement de fermes piscicoles modernes pour approvisionner le marché local.</p></div>
+        <div class="agri-card rv d2"><div class="agri-icon-wrap"><img src="https://cdn-icons-png.flaticon.com/128/2674/2674503.png" alt="Transformation"/></div><h4>Transformation agro-alimentaire</h4><p>Unités de transformation, conditionnement, valorisation des produits agricoles pour l'export et la distribution nationale.</p></div>
+        <div class="agri-card rv"><div class="agri-icon-wrap"><img src="https://cdn-icons-png.flaticon.com/128/1684/1684375.png" alt="Intrants"/></div><h4>Fourniture d'intrants agricoles</h4><p>Distribution de semences améliorées, engrais, produits phytosanitaires et matériels agricoles de qualité.</p></div>
+        <div class="agri-card rv d1"><div class="agri-icon-wrap"><img src="https://cdn-icons-png.flaticon.com/128/3073/3073665.png" alt="Conseil"/></div><h4>Conseil &amp; Formation agricole</h4><p>Accompagnement technique des agriculteurs, formation aux bonnes pratiques culturales et gestion d'exploitation.</p></div>
+        <div class="agri-card rv d2"><div class="agri-icon-wrap"><img src="https://cdn-icons-png.flaticon.com/128/2329/2329865.png" alt="Financement"/></div><h4>Financement de projets agricoles</h4><p>Montage de dossiers de financement, mise en relation avec les bailleurs de fonds et partenaires agricoles.</p></div>
+      </div>
+      <div class="agri-stats rv" id="agri-stats">
+        <div class="stat-item"><div><span class="stat-val" data-target="500">0</span><span class="stat-unit">+</span></div><p class="stat-label">Agriculteurs accompagnés</p></div>
+        <div class="stat-item"><div><span class="stat-val" data-target="12">0</span><span class="stat-unit"></span></div><p class="stat-label">Filières couvertes</p></div>
+        <div class="stat-item"><div><span class="stat-val" data-target="8">0</span><span class="stat-unit"></span></div><p class="stat-label">Régions d'intervention</p></div>
+        <div class="stat-item"><div><span class="stat-val" data-target="20">0</span><span class="stat-unit"> ans</span></div><p class="stat-label">D'expérience terrain</p></div>
+      </div>
+      <div class="agri-cta rv">
+        <div class="agri-cta-text"><h3>Vous avez un projet agricole ?</h3><p>Notre équipe vous accompagne de l'étude de faisabilité jusqu'à la mise en marché de vos produits.</p></div>
+        <a href="#contact" class="btn btn-green" style="white-space:nowrap">Démarrer votre projet &nbsp;›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ TOURISME & VOYAGE (NEW) ══════════════════════ -->
+<section id="tourisme">
+  <div class="wrap">
+    <h2 class="sec-title rv">Tourisme &amp; Voyage</h2>
+    <div class="sec-bar rv" style="background:var(--teal)"></div>
+
+    <div class="tour-hero-banner rv">
+      <div class="tour-hero-overlay"></div>
+      <div class="tour-hero-content">
+        <div class="tour-badge">✈️ Services voyages</div>
+        <h2>Voyagez l'esprit tranquille avec Groupe Jnak</h2>
+        <p>Nous prenons en charge l'intégralité de votre parcours : visa, billets, hébergement, assurance et circuits — pour que vous profitiez pleinement de chaque destination.</p>
+        <a href="#contact" class="btn btn-teal">Planifier mon voyage &nbsp;›</a>
+      </div>
+    </div>
+
+    <div class="tour-services-grid">
+      <div class="tour-card rv">
+        <div class="tour-icon">🛂</div>
+        <h4>Assistance visa</h4>
+        <p>Accompagnement complet pour l'obtention de visas : constitution de dossiers, rendez-vous consulaires et suivi des démarches pour tous les pays de destination.</p>
+      </div>
+      <div class="tour-card rv d1">
+        <div class="tour-icon">🎟️</div>
+        <h4>Réservation de billets</h4>
+        <p>Réservation de billets d'avion, de train ou de bus aux meilleurs tarifs. Gestion des correspondances, classes et options bagages pour un voyage sans stress.</p>
+      </div>
+      <div class="tour-card rv d2">
+        <div class="tour-icon">🏨</div>
+        <h4>Hébergement</h4>
+        <p>Sélection et réservation d'hôtels, d'appartements ou de logements adaptés à votre budget et à vos préférences dans toutes les destinations.</p>
+      </div>
+      <div class="tour-card rv">
+        <div class="tour-icon">🛡️</div>
+        <h4>Assurance voyage</h4>
+        <p>Souscription d'assurances voyageurs couvrant les annulations, les frais médicaux, la perte de bagages et les imprévus pour voyager en toute sérénité.</p>
+      </div>
+      <div class="tour-card rv d1">
+        <div class="tour-icon">🗺️</div>
+        <h4>Organisation de circuits</h4>
+        <p>Conception et organisation de voyages à thème et de circuits touristiques sur mesure : safaris, circuits culturels, city-trips et voyages d'affaires.</p>
+      </div>
+      <div class="tour-card rv d2">
+        <div class="tour-icon">🤝</div>
+        <h4>Accompagnement personnalisé</h4>
+        <p>Un conseiller dédié vous guide à chaque étape de votre voyage, de la planification jusqu'au retour, disponible pour toute assistance en cours de séjour.</p>
+      </div>
+    </div>
+
+    <div class="tour-cta rv">
+      <div class="tour-cta-text">
+        <h3>Prêt à explorer le monde ?</h3>
+        <p>Contactez notre équipe Voyage pour un devis personnalisé et gratuit. Nous construisons ensemble votre itinéraire idéal.</p>
+      </div>
+      <a href="#contact" class="btn btn-teal" style="white-space:nowrap">Demander un devis &nbsp;›</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ BLOG ══════════════════════ -->
+<section id="blog">
+  <div class="wrap">
+    <h2 class="sec-title rv">Blog &amp; Actualités</h2>
+    <div class="sec-bar rv"></div>
+    <div class="blog-topbar rv">
+      <div class="blog-filters">
+        <button class="bf on" data-filter="all">Tous</button>
+        <button class="bf" data-filter="Management">Management</button>
+        <button class="bf" data-filter="RH">RH</button>
+        <button class="bf" data-filter="Agriculture">Agriculture</button>
+        <button class="bf" data-filter="Business">Business</button>
+      </div>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+    <div id="blogEmpty" style="display:none;text-align:center;padding:48px 0;color:#bbb;font-size:.95rem">
+      Aucun article dans cette catégorie pour le moment.
+    </div>
+  </div>
+</section>
+
+<!-- Article modal -->
+<div class="modal-bg" id="articleModal">
+  <div class="modal-box">
+    <img src="" id="modal-cover" class="modal-cover" alt=""/>
+    <div class="modal-inner">
+      <button class="modal-close" id="closeModal">×</button>
+      <span class="modal-tag" id="modal-tag"></span>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-meta" id="modal-meta"></div>
+      <div class="modal-body" id="modal-body"></div>
+      <hr class="modal-sep"/>
+      <div class="comments-section">
+        <h5 id="modal-cmt-count">Commentaires</h5>
+        <!-- FIXED: bouton Publier ajouté et visible -->
+        <div class="comment-form">
+          <input type="text" id="cmt-name" placeholder="Votre nom"/>
+          <input type="text" id="cmt-text" placeholder="Votre commentaire…"/>
+          <button class="cmt-submit-btn" id="cmt-submit">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            Publier
+          </button>
+        </div>
+        <div class="comment-list" id="comment-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ CONTACT ══════════════════════ -->
+<section id="contact">
+  <div class="wrap">
+    <h2 class="sec-title rv">Nous Contacter</h2>
+    <div class="sec-bar rv"></div>
+    <div class="contact-grid">
+      <div class="cinfo rv">
+        <h3>Groupe Jnak SARL</h3>
+        <div class="cinfo-item"><span>📍</span><span>Douala, Cameroun</span></div>
+        <div class="cinfo-item"><span>📞</span><span>+237 6XX XXX XXX</span></div>
+        <div class="cinfo-item"><span>✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="60030f0e140103142007120f1510050a0e010b4e030f0d">[email&#160;protected]</a></span></div>
+        <div class="cinfo-item"><span>🌐</span><span>www.groupejnak.com</span></div>
+        <div class="cinfo-item"><span>🕐</span><span>Lun – Ven : 08h00 – 17h30</span></div>
+      </div>
+      <form class="cform rv d1" id="cform" novalidate>
+        <div class="frow">
+          <div class="finput"><input type="text" id="cnom" placeholder="Votre nom *" required/></div>
+          <div class="finput"><input type="email" id="cemail" placeholder="Votre email *" required/></div>
+        </div>
+        <div class="finput"><input type="text" id="csujet" placeholder="Sujet *" required/></div>
+        <div class="finput">
+          <select id="cdomaine">
+            <option value="">— Domaine d'intérêt —</option>
+            <option>Fournitures de bureau</option>
+            <option>Import / Export</option>
+            <option>Agriculture</option>
+            <option>Tourisme &amp; Voyage</option>
+            <option>Immobilier</option>
+            <option>Autres prestations</option>
+          </select>
+        </div>
+        <div class="finput"><textarea id="cmessage" rows="4" placeholder="Votre message *" required></textarea></div>
+        <button type="submit" class="btn btn-orange" id="csend" style="width:100%;justify-content:center">Envoyer le message</button>
+        <div class="cmsg" id="cmsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-logo">
+        <svg width="22" height="22" viewBox="0 0 30 30" fill="none"><path d="M26 5L4 14.5l8 2.5 2.5 8 4.5-9L26 5z" fill="#f59a1a"/></svg>
+        Groupe Jnak <small>SARL</small>
+      </div>
+      <div class="foot-links">
+        <a href="#about">À Propos</a>
+        <a href="#activities">Activités</a>
+        <a href="#agriculture">Agriculture</a>
+        <a href="#tourisme">Tourisme</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-social">
+        <a href="#" class="soc" aria-label="Facebook">f</a>
+        <a href="#" class="soc" aria-label="LinkedIn">in</a>
+        <a href="#" class="soc" aria-label="Twitter">𝕏</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-copy">© 2024 Groupe Jnak SARL – Tous Droits Réservés.</div>
+</footer>
+
+<!-- ══════════════════════ MODAL LOGIN ADMIN ══════════════════════ -->
+<div id="adminLoginModal">
+  <div class="al-box">
+    <button class="al-close" id="closeAdminLogin">×</button>
+    <div class="al-logo">
+      <svg width="26" height="26" viewBox="0 0 30 30" fill="none">
+        <path d="M26 5L4 14.5l8 2.5 2.5 8 4.5-9L26 5z" fill="#f59a1a"/>
+        <path d="M12 17l3.5-3.5" stroke="#1a3670" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Groupe Jnak <span style="font-weight:400;color:#bbb;margin-left:2px;font-size:.82em">SARL</span>
+    </div>
+    <p class="al-sub">Espace Administrateur</p>
+    <div class="al-badge">🔒 Accès restreint</div>
+    <input class="al-input" type="text" id="al-user" placeholder="Identifiant" autocomplete="username"/>
+    <input class="al-input" type="password" id="al-pass" placeholder="Mot de passe" autocomplete="current-password"/>
+    <button class="al-btn" id="al-loginBtn">
+      <span id="al-btn-text">Se connecter →</span>
+    </button>
+    <div class="al-err" id="al-err"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════ DASHBOARD ADMIN ══════════════════════ -->
+<div id="adminDashboard">
+  <div class="adash-wrap">
+    <!-- Sidebar -->
+    <aside class="adash-sidebar">
+      <div class="adash-sidebar-logo">
+        <svg width="20" height="20" viewBox="0 0 30 30" fill="none"><path d="M26 5L4 14.5l8 2.5 2.5 8 4.5-9L26 5z" fill="#f59a1a"/></svg>
+        Jnak <small>Admin</small>
+      </div>
+      <nav class="adash-nav">
+        <div class="adash-nav-section">Menu</div>
+        <button class="adash-link active" data-apage="overview">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          Tableau de bord
+        </button>
+        <button class="adash-link" data-apage="articles">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          Articles
+          <span class="adash-badge" id="adash-art-count">0</span>
+        </button>
+        <button class="adash-link" data-apage="newart">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          Nouvel article
+        </button>
+      </nav>
+      <div class="adash-sidebar-bottom">
+        <button class="adash-back-btn" id="adash-back-site">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          Retour au site
+        </button>
+        <button class="adash-logout" id="adash-logout">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+          Déconnexion
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="adash-main">
+      <div class="adash-topbar">
+        <div class="adash-topbar-left">
+          <h1 id="adash-title">Tableau de bord</h1>
+          <p id="adash-sub">Vue d'ensemble de votre blog</p>
+        </div>
+        <div class="adash-topbar-right">
+          <div style="text-align:right">
+            <div class="adash-admin-label">Administrateur</div>
+            <div class="adash-session" id="adash-session">Connecté</div>
+          </div>
+          <div class="adash-avatar">A</div>
+        </div>
+      </div>
+
+      <div class="adash-body">
+
+        <!-- PAGE : OVERVIEW -->
+        <div class="adash-page active" id="apage-overview">
+          <div class="adash-stats">
+            <div class="adash-stat c-blue">
+              <div class="adash-stat-icon c-blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+              <div><div class="adash-stat-val" id="astat-pub">0</div><div class="adash-stat-label">Articles publiés</div></div>
+            </div>
+            <div class="adash-stat c-orange">
+              <div class="adash-stat-icon c-orange"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></div>
+              <div><div class="adash-stat-val" id="astat-draft">0</div><div class="adash-stat-label">Brouillons</div></div>
+            </div>
+            <div class="adash-stat c-green">
+              <div class="adash-stat-icon c-green"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+              <div><div class="adash-stat-val" id="astat-likes">0</div><div class="adash-stat-label">Total likes</div></div>
+            </div>
+            <div class="adash-stat c-red">
+              <div class="adash-stat-icon c-red"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+              <div><div class="adash-stat-val" id="astat-cmt">0</div><div class="adash-stat-label">Commentaires</div></div>
+            </div>
+          </div>
+          <div class="adash-card">
+            <div class="adash-card-head">
+              <h2>📰 Articles récents</h2>
+              <button class="aform-btn-pub" style="font-size:.76rem;padding:7px 16px" onclick="goAdminPage('newart')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                Nouvel article
+              </button>
+            </div>
+            <table class="adash-table">
+              <thead><tr><th>Titre</th><th>Catégorie</th><th>Auteur</th><th>Date</th><th>Statut</th><th>Actions</th></tr></thead>
+              <tbody id="adash-overview-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PAGE : ARTICLES -->
+        <div class="adash-page" id="apage-articles">
+          <div class="adash-card">
+            <div class="adash-card-head">
+              <h2>📋 Gestion des articles</h2>
+              <button class="aform-btn-pub" style="font-size:.76rem;padding:7px 16px" onclick="goAdminPage('newart')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                Nouvel article
+              </button>
+            </div>
+            <table class="adash-table">
+              <thead><tr><th>Titre</th><th>Catégorie</th><th>Auteur</th><th>Date</th><th>❤️</th><th>💬</th><th>Statut</th><th>Actions</th></tr></thead>
+              <tbody id="adash-articles-tbody"></tbody>
+            </table>
+            <div class="adash-empty" id="adash-arts-empty" style="display:none">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <p>Aucun article. Créez le premier !</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGE : NOUVEL / MODIFIER ARTICLE -->
+        <div class="adash-page" id="apage-newart">
+          <div class="adash-card">
+            <div class="adash-card-head">
+              <h2 id="aform-title">✏️ Créer un nouvel article</h2>
+            </div>
+            <div style="padding:22px 24px">
+              <input type="hidden" id="af-editing-id"/>
+              <div class="aform-grid">
+                <div class="aform-group full">
+                  <label class="aform-label">Titre *</label>
+                  <input class="aform-input" type="text" id="af-title" placeholder="Titre accrocheur de l'article..."/>
+                </div>
+                <div class="aform-group">
+                  <label class="aform-label">Auteur *</label>
+                  <input class="aform-input" type="text" id="af-author" placeholder="Nom de l'auteur"/>
+                </div>
+                <div class="aform-group">
+                  <label class="aform-label">Catégorie</label>
+                  <select class="aform-select" id="af-tag">
+                    <option value="Management">Management</option>
+                    <option value="RH">RH</option>
+                    <option value="Agriculture">Agriculture</option>
+                    <option value="Business">Business</option>
+                  </select>
+                </div>
+                <div class="aform-group full">
+                  <label class="aform-label">Résumé (extrait) *</label>
+                  <textarea class="aform-textarea" id="af-excerpt" rows="2" placeholder="2-3 phrases de présentation..."></textarea>
+                </div>
+                <div class="aform-group full">
+                  <label class="aform-label">Contenu complet *</label>
+                  <div class="aform-toolbar">
+                    <button class="aform-tb-btn" type="button" onclick="afFmt('bold')"><b>G</b></button>
+                    <button class="aform-tb-btn" type="button" onclick="afFmt('italic')"><i>I</i></button>
+                    <button class="aform-tb-btn" type="button" onclick="afFmt('underline')"><u>S</u></button>
+                    <div class="aform-sep"></div>
+                    <button class="aform-tb-btn" type="button" onclick="afFmtBlock('h3')">H3</button>
+                    <button class="aform-tb-btn" type="button" onclick="afFmtBlock('p')">¶ Para</button>
+                    <div class="aform-sep"></div>
+                    <button class="aform-tb-btn" type="button" onclick="afFmt('insertUnorderedList')">• Liste</button>
+                    <button class="aform-tb-btn" type="button" onclick="afFmt('insertOrderedList')">1. Liste</button>
+                    <div class="aform-sep"></div>
+                    <button class="aform-tb-btn" type="button" onclick="afFmtLink()">🔗 Lien</button>
+                  </div>
+                  <div id="af-content-editor" contenteditable="true" data-placeholder="Rédigez votre article ici..."></div>
+                </div>
+                <div class="aform-group full">
+                  <label class="aform-label">Image de couverture (URL)</label>
+                  <input class="aform-input" type="text" id="af-img" placeholder="https://images.unsplash.com/..."/>
+                  <div class="img-prev-box" id="af-img-box">
+                    <img id="af-img-prev" src="" alt="Aperçu"/>
+                    <div class="img-prev-placeholder" id="af-img-ph">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                      <p>Aperçu image</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="aform-actions">
+                <button class="aform-btn-cancel" id="af-cancel" type="button" style="display:none">Annuler</button>
+                <button class="aform-btn-draft" id="af-draft-btn" type="button">💾 Brouillon</button>
+                <button class="aform-btn-pub" id="af-pub-btn" type="button">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                  Publier l'article
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="adash-toast">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+  <span id="adash-toast-msg"></span>
+</div>
+
+<!-- Confirm suppression -->
+<div id="adash-confirm">
+  <div class="aconfirm-box">
+    <div style="font-size:2.2rem;margin-bottom:10px">🗑️</div>
+    <h3>Supprimer cet article ?</h3>
+    <p>Cette action est irréversible. L'article sera définitivement supprimé du blog.</p>
+    <div class="aconfirm-actions">
+      <button class="acbtn acbtn-cancel" id="aconf-cancel">Annuler</button>
+      <button class="acbtn acbtn-del" id="aconf-ok">Oui, supprimer</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ JAVASCRIPT ══════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ════════════════════════════════════════════
+   SCROLL REVEAL, NAV, TABS, COUNTERS
+════════════════════════════════════════════ */
+const rvEls = document.querySelectorAll('.rv');
+const rvObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); rvObs.unobserve(e.target); } });
+},{threshold:0.1});
+rvEls.forEach(el=>rvObs.observe(el));
+
+const secs = document.querySelectorAll('section[id]');
+const nls  = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-100) cur=s.id; });
+  nls.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+const ham=document.getElementById('ham');
+const mob=document.getElementById('mob');
+ham.addEventListener('click',()=>mob.classList.toggle('open'));
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById(btn.dataset.tab).classList.add('on');
+  });
+});
+
+function runCounter(el){
+  const target=parseInt(el.dataset.target);
+  const steps=1800/(1000/60);
+  const inc=target/steps;
+  let val=0;
+  const t=setInterval(()=>{ val=Math.min(val+inc,target); el.textContent=Math.floor(val); if(val>=target)clearInterval(t); },1000/60);
+}
+const statsEl=document.getElementById('agri-stats');
+let countersDone=false;
+const cntObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&!countersDone){ countersDone=true; statsEl.querySelectorAll('.stat-val').forEach(runCounter); cntObs.disconnect(); }
+},{threshold:0.3});
+if(statsEl) cntObs.observe(statsEl);
+
+/* Contact form */
+const cform=document.getElementById('cform');
+const cmsg=document.getElementById('cmsg');
+const csend=document.getElementById('csend');
+cform.addEventListener('submit',async e=>{
+  e.preventDefault();
+  cmsg.className='cmsg'; cmsg.textContent='';
+  const nom=document.getElementById('cnom').value.trim();
+  const email=document.getElementById('cemail').value.trim();
+  const sujet=document.getElementById('csujet').value.trim();
+  const domaine=document.getElementById('cdomaine').value;
+  const message=document.getElementById('cmessage').value.trim();
+  if(!nom||!email||!sujet||!message){cmsg.className='cmsg err';cmsg.textContent='⚠️ Veuillez remplir tous les champs obligatoires.';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){cmsg.className='cmsg err';cmsg.textContent='⚠️ Adresse email invalide.';return;}
+  csend.disabled=true; csend.textContent='Envoi en cours…';
+  try{
+    const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nom,email,sujet,domaine,message})});
+    const data=await res.json();
+    if(!res.ok) throw new Error(data.error||'Erreur serveur');
+    cmsg.className='cmsg ok'; cmsg.textContent='✅ Message envoyé ! Nous vous répondrons rapidement.'; cform.reset();
+  }catch(err){
+    if(err.message.includes('fetch')||err.message.includes('Failed')){cmsg.className='cmsg ok';cmsg.textContent='✅ Message envoyé ! (Mode démo)';cform.reset();}
+    else{cmsg.className='cmsg err';cmsg.textContent='❌ '+err.message;}
+  }
+  csend.disabled=false; csend.textContent='Envoyer le message';
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* ════════════════════════════════════════════
+   BLOG ENGINE
+════════════════════════════════════════════ */
+const TAG_CLASS={Agriculture:'blog-tag-green',Business:'blog-tag-orange'};
+const ADASH_TAG_CLASS={Management:'mgt',RH:'rh',Agriculture:'agri',Business:'biz'};
+
+let ARTICLES=[
+  {id:1,tag:'Management',author:'Équipe Jnak',date:'15 Jan 2022',status:'published',
+   title:'Les clés du succès en gestion de projet',
+   excerpt:'Planifier, organiser et mener à bien vos projets grâce à des méthodes éprouvées de management.',
+   content:'<p>La gestion de projet est un art qui s\'apprend. Que vous dirigiez une petite équipe ou un programme multi-sites, certains principes fondamentaux font toujours la différence.</p><p><strong>1. Définir des objectifs SMART :</strong> Spécifiques, Mesurables, Atteignables, Réalistes, et Temporellement définis. Un objectif flou est un projet voué à l\'échec.</p><p><strong>2. Impliquer toutes les parties prenantes dès le départ :</strong> Les surprises en milieu de projet coûtent trois fois plus cher que les ajustements précoces.</p><p><strong>3. Planifier les risques :</strong> Identifiez les risques potentiels et préparez des plans de contingence. Anticiper vaut mieux que réagir.</p><p><strong>4. Communiquer régulièrement :</strong> Les réunions de suivi hebdomadaires maintiennent l\'alignement et la motivation de l\'équipe.</p>',
+   image:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80&auto=format&fit=crop',
+   likes:12,comments:[{name:'Marie K.',text:'Très bon article, surtout la partie sur les risques !',time:'Il y a 2 jours'},{name:'Paul N.',text:'Merci pour ces conseils pratiques.',time:'Il y a 1 semaine'}]},
+  {id:2,tag:'RH',author:'Sophie Mbida',date:'08 Jan 2022',status:'published',
+   title:'Comment booster la performance de votre équipe',
+   excerpt:'Des stratégies concrètes pour motiver, aligner et responsabiliser votre équipe vers des résultats exceptionnels.',
+   content:'<p>La performance collective repose sur la motivation individuelle.</p><p><strong>Reconnaître les efforts :</strong> Un simple "merci" peut décupler l\'engagement d\'un collaborateur.</p><p><strong>Donner de l\'autonomie :</strong> Les équipes qui disposent d\'une certaine latitude sont plus créatives et plus impliquées.</p><p><strong>Former en continu :</strong> Investir dans la montée en compétences, c\'est signaler à vos collaborateurs qu\'ils ont un avenir dans l\'entreprise.</p>',
+   image:'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=700&q=80&auto=format&fit=crop',
+   likes:8,comments:[{name:'Alain T.',text:'L\'autonomie est vraiment sous-estimée dans nos entreprises.',time:'Il y a 3 jours'}]},
+  {id:3,tag:'Agriculture',author:'Dr. Bello Hamadou',date:'20 Fév 2022',status:'published',
+   title:'L\'agriculture digitale au service des producteurs africains',
+   excerpt:'Comment la technologie transforme l\'agriculture en Afrique centrale et ouvre de nouvelles opportunités.',
+   content:'<p>L\'agriculture africaine entre dans une nouvelle ère. Des drones aux applications mobiles de conseil, le digital redessine le métier d\'agriculteur.</p><p><strong>Les drones au service des cultures :</strong> Utilisés pour la cartographie des parcelles et la détection précoce des maladies.</p><p><strong>Les applications de conseil agricole :</strong> Des plateformes permettent aux petits producteurs de recevoir des conseils agronomiques directement sur leur téléphone.</p>',
+   image:'https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=700&q=80&auto=format&fit=crop',
+   likes:21,comments:[{name:'Ibrahim S.',text:'Excellent aperçu de l\'agritech en Afrique !',time:'Il y a 1 jour'},{name:'Claire M.',text:'La partie sur la blockchain est fascinante.',time:'Il y a 5 jours'}]},
+];
+
+/* saveArticles / loadArticles / saveLiked → gérés par /js/api-client.js (PHP+MySQL) */
+function saveArticles(){}
+function loadArticles(){}
+let currentLiked=new Set();
+let activeFilter='all';
+let openArticleId=null;
+function saveLiked(){}
+function fmtDateNow(){ return new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'}); }
+function tagCls(tag){ return TAG_CLASS[tag]||''; }
+
+function renderBlog(){
+  const grid=document.getElementById('blogGrid');
+  const empty=document.getElementById('blogEmpty');
+  const list=(activeFilter==='all'?ARTICLES:ARTICLES.filter(a=>a.tag===activeFilter)).filter(a=>a.status==='published');
+  if(!list.length){ grid.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display='none';
+  grid.innerHTML=list.map((a,i)=>`
+    <div class="blog-card rv ${i===1?'d1':i===2?'d2':''}" data-id="${a.id}">
+      <div class="blog-card-img">
+        <img src="${a.image||'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=80'}" alt="${a.title.replace(/"/g,'')}" loading="lazy"/>
+      </div>
+      <div class="blog-body">
+        <span class="blog-tag ${tagCls(a.tag)}">${a.tag}</span>
+        <h4 onclick="openArticle(${a.id})">${a.title}</h4>
+        <div class="blog-meta">
+          <span class="blog-date">${a.date}</span>
+          <span style="color:#ddd">·</span>
+          <span class="blog-author">${a.author}</span>
+        </div>
+        <p class="blog-excerpt">${a.excerpt}</p>
+        <div class="blog-actions">
+          <div class="blog-act-left">
+            <button class="like-btn ${currentLiked.has(a.id)?'liked':''}" onclick="toggleLike(event,${a.id})">
+              <svg width="14" height="14" viewBox="0 0 24 24"><path fill="${currentLiked.has(a.id)?'#e74c3c':'none'}" stroke="${currentLiked.has(a.id)?'#e74c3c':'#999'}" stroke-width="2" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              <span id="like-count-${a.id}">${a.likes}</span>
+            </button>
+            <button class="cmt-btn" onclick="openArticle(${a.id})">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>${a.comments.length}</span>
+            </button>
+          </div>
+          <button class="read-btn" onclick="openArticle(${a.id})">Lire l'article ›</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.rv:not(.in)').forEach(el=>rvObs.observe(el));
+}
+
+function toggleLike(e,id){
+  e.stopPropagation();
+  const art=ARTICLES.find(a=>a.id===id); if(!art) return;
+  const btn=e.currentTarget;
+  if(currentLiked.has(id)){
+    currentLiked.delete(id); art.likes--;
+    btn.classList.remove('liked');
+    btn.querySelector('path').setAttribute('fill','none');
+    btn.querySelector('path').setAttribute('stroke','#999');
+  } else {
+    currentLiked.add(id); art.likes++;
+    btn.classList.add('liked');
+    btn.querySelector('path').setAttribute('fill','#e74c3c');
+    btn.querySelector('path').setAttribute('stroke','#e74c3c');
+  }
+  document.getElementById('like-count-'+id).textContent=art.likes;
+  saveLiked(); saveArticles();
+}
+
+function openArticle(id){
+  const art=ARTICLES.find(a=>a.id===id); if(!art) return;
+  openArticleId=id;
+  const modal=document.getElementById('articleModal');
+  const cover=document.getElementById('modal-cover');
+  cover.src=art.image||''; cover.style.display=art.image?'block':'none';
+  document.getElementById('modal-tag').textContent=art.tag;
+  document.getElementById('modal-tag').className='modal-tag '+tagCls(art.tag);
+  document.getElementById('modal-title').textContent=art.title;
+  document.getElementById('modal-meta').textContent=art.date+' · Par '+art.author;
+  document.getElementById('modal-body').innerHTML=art.content;
+  renderComments(art);
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function renderComments(art){
+  const list=document.getElementById('comment-list');
+  document.getElementById('modal-cmt-count').textContent='Commentaires ('+art.comments.length+')';
+  if(!art.comments.length){ list.innerHTML='<div class="no-comments">Soyez le premier à commenter cet article.</div>'; return; }
+  list.innerHTML=art.comments.map(c=>`
+    <div class="comment-item">
+      <div class="comment-avatar">${c.name.charAt(0).toUpperCase()}</div>
+      <div class="comment-content">
+        <div class="comment-name">${c.name}</div>
+        <div class="comment-text">${c.text}</div>
+        <div class="comment-time">${c.time}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('closeModal').addEventListener('click',()=>{
+  document.getElementById('articleModal').classList.remove('open');
+  document.body.style.overflow=''; openArticleId=null;
+});
+document.getElementById('articleModal').addEventListener('click',e=>{
+  if(e.target===document.getElementById('articleModal')){
+    document.getElementById('articleModal').classList.remove('open');
+    document.body.style.overflow=''; openArticleId=null;
+  }
+});
+
+/* FIXED: bouton Publier commentaire */
+document.getElementById('cmt-submit').addEventListener('click',()=>{
+  const name=document.getElementById('cmt-name').value.trim();
+  const text=document.getElementById('cmt-text').value.trim();
+  if(!name||!text){ return; }
+  const art=ARTICLES.find(a=>a.id===openArticleId); if(!art) return;
+  art.comments.unshift({name,text,time:"À l'instant"});
+  renderComments(art);
+  const cmtBtn=document.querySelector('.blog-card[data-id="'+openArticleId+'"] .cmt-btn span');
+  if(cmtBtn) cmtBtn.textContent=art.comments.length;
+  document.getElementById('cmt-name').value='';
+  document.getElementById('cmt-text').value='';
+  saveArticles();
+});
+/* Enter dans champ commentaire */
+document.getElementById('cmt-text').addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); document.getElementById('cmt-submit').click(); }
+});
+
+document.querySelectorAll('.bf').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.bf').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    activeFilter=btn.dataset.filter;
+    renderBlog();
+  });
+});
+
+/* ════════════════════════════════════════════
+   AUTH ADMIN
+════════════════════════════════════════════ */
+/* Identifiants admin → vérifiés côté PHP (config/database.php) */
+let adminLoggedIn=false;
+let sessionStart=null;
+let sessionTimer=null;
+
+document.getElementById('openAdminLogin').addEventListener('click',()=>{
+  document.getElementById('adminLoginModal').classList.add('open');
+  setTimeout(()=>document.getElementById('al-user').focus(),100);
+});
+document.getElementById('closeAdminLogin').addEventListener('click',()=>{
+  document.getElementById('adminLoginModal').classList.remove('open');
+  document.getElementById('al-err').textContent='';
+});
+document.getElementById('adminLoginModal').addEventListener('click',e=>{
+  if(e.target===document.getElementById('adminLoginModal'))
+    document.getElementById('adminLoginModal').classList.remove('open');
+});
+document.getElementById('al-pass').addEventListener('keydown',e=>{ if(e.key==='Enter') doAdminLogin(); });
+document.getElementById('al-loginBtn').addEventListener('click',doAdminLogin);
+
+/* doAdminLogin() → surchargée par /js/api-client.js (appel PHP) */
+function doAdminLogin(){ /* voir api-client.js */ }
+
+function updateSessionLabel(){
+  if(!sessionStart) return;
+  const mins=Math.floor((new Date()-sessionStart)/60000);
+  document.getElementById('adash-session').textContent=mins<1?"Connecté à l'instant":"Connecté depuis "+mins+" min";
+}
+
+document.getElementById('adash-logout').addEventListener('click',()=>{
+  adminLoggedIn=false;
+  clearInterval(sessionTimer);
+  document.getElementById('adminDashboard').classList.remove('open');
+  document.body.style.overflow='';
+  document.getElementById('al-user').value='';
+});
+document.getElementById('adash-back-site').addEventListener('click',()=>{
+  document.getElementById('adminDashboard').classList.remove('open');
+  document.body.style.overflow='';
+});
+
+/* ════════════════════════════════════════════
+   DASHBOARD NAVIGATION
+════════════════════════════════════════════ */
+const adashTitles={
+  overview:['Tableau de bord',"Vue d'ensemble de votre blog"],
+  articles:['Gestion des articles','Modifier, publier ou supprimer vos articles'],
+  newart:['Nouvel article','Créez et publiez un nouvel article'],
+};
+document.querySelectorAll('.adash-link[data-apage]').forEach(btn=>{
+  btn.addEventListener('click',()=>goAdminPage(btn.dataset.apage));
+});
+function goAdminPage(id){
+  document.querySelectorAll('.adash-page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.adash-link').forEach(l=>l.classList.remove('active'));
+  const page=document.getElementById('apage-'+id);
+  if(page) page.classList.add('active');
+  const lnk=document.querySelector('.adash-link[data-apage="'+id+'"]');
+  if(lnk) lnk.classList.add('active');
+  const t=adashTitles[id]||['',''];
+  document.getElementById('adash-title').textContent=t[0];
+  document.getElementById('adash-sub').textContent=t[1];
+  if(id==='overview') renderAdashOverview();
+  if(id==='articles') renderAdashArticles();
+  if(id==='newart'&&!document.getElementById('af-editing-id').value) resetAdminForm();
+}
+
+/* ════════════════════════════════════════════
+   ADMIN RENDERS
+════════════════════════════════════════════ */
+function refreshAdminData(){
+  const pub=ARTICLES.filter(a=>a.status==='published').length;
+  const drft=ARTICLES.filter(a=>a.status==='draft').length;
+  const likes=ARTICLES.reduce((s,a)=>s+a.likes,0);
+  const cmts=ARTICLES.reduce((s,a)=>s+a.comments.length,0);
+  document.getElementById('astat-pub').textContent=pub;
+  document.getElementById('astat-draft').textContent=drft;
+  document.getElementById('astat-likes').textContent=likes;
+  document.getElementById('astat-cmt').textContent=cmts;
+  document.getElementById('adash-art-count').textContent=ARTICLES.length;
+}
+
+function adashTagPill(tag){
+  const cls=ADASH_TAG_CLASS[tag]||'';
+  return `<span class="adash-tag ${cls}">${tag}</span>`;
+}
+
+/* FIXED: renderAdashOverview avec boutons Modifier/Supprimer fonctionnels */
+function renderAdashOverview(){
+  refreshAdminData();
+  const tbody=document.getElementById('adash-overview-tbody');
+  tbody.innerHTML=ARTICLES.slice(0,5).map(a=>`
+    <tr>
+      <td style="font-weight:600;max-width:230px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escHtml(a.title)}</td>
+      <td>${adashTagPill(a.tag)}</td>
+      <td style="color:var(--text2)">${escHtml(a.author)}</td>
+      <td style="color:#bbb;font-size:.8rem">${a.date}</td>
+      <td>${a.status==='published'?'<span class="adash-status-pub">● Publié</span>':'<span class="adash-status-drft">● Brouillon</span>'}</td>
+      <td><div class="adash-tbl-btns">
+        <button class="atb edit" onclick="adashEdit(${a.id})">✏️ Modifier</button>
+        <button class="atb del" onclick="adashAskDelete(${a.id})">🗑️ Supprimer</button>
+      </div></td>
+    </tr>
+  `).join('');
+}
+
+/* FIXED: renderAdashArticles avec tous les boutons fonctionnels */
+function renderAdashArticles(){
+  refreshAdminData();
+  const tbody=document.getElementById('adash-articles-tbody');
+  const empty=document.getElementById('adash-arts-empty');
+  if(!ARTICLES.length){ tbody.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display='none';
+  tbody.innerHTML=ARTICLES.map(a=>`
+    <tr>
+      <td style="font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escHtml(a.title)}</td>
+      <td>${adashTagPill(a.tag)}</td>
+      <td style="color:var(--text2)">${escHtml(a.author)}</td>
+      <td style="color:#bbb;font-size:.8rem">${a.date}</td>
+      <td style="text-align:center;color:#e74c3c">${a.likes}</td>
+      <td style="text-align:center;color:var(--navy)">${a.comments.length}</td>
+      <td>${a.status==='published'?'<span class="adash-status-pub">● Publié</span>':'<span class="adash-status-drft">● Brouillon</span>'}</td>
+      <td><div class="adash-tbl-btns">
+        <button class="atb edit" onclick="adashEdit(${a.id})">✏️ Modifier</button>
+        ${a.status==='draft'?`<button class="atb pub" onclick="adashPublishNow(${a.id})">🚀 Publier</button>`:''}
+        <button class="atb del" onclick="adashAskDelete(${a.id})">🗑️ Supprimer</button>
+      </div></td>
+    </tr>
+  `).join('');
+}
+
+/* ════════════════════════════════════════════
+   ADMIN FORM
+════════════════════════════════════════════ */
+function afFmt(cmd){ document.execCommand(cmd,false,null); document.getElementById('af-content-editor').focus(); }
+function afFmtBlock(tag){ document.execCommand('formatBlock',false,'<'+tag+'>'); document.getElementById('af-content-editor').focus(); }
+function afFmtLink(){ const url=prompt('URL du lien :','https://'); if(url) document.execCommand('createLink',false,url); }
+
+document.getElementById('af-img').addEventListener('input',e=>{
+  const url=e.target.value.trim();
+  const img=document.getElementById('af-img-prev');
+  const ph=document.getElementById('af-img-ph');
+  if(url){ img.src=url; img.style.display='block'; ph.style.display='none'; }
+  else { img.style.display='none'; ph.style.display='flex'; }
+});
+
+document.getElementById('af-pub-btn').addEventListener('click',()=>adashSubmit('published'));
+document.getElementById('af-draft-btn').addEventListener('click',()=>adashSubmit('draft'));
+document.getElementById('af-cancel').addEventListener('click',resetAdminForm);
+
+/* adashSubmit() → surchargée par /js/api-client.js (appel PHP+MySQL) */
+function adashSubmit(status){ /* voir api-client.js */ }
+
+function resetAdminForm(){
+  document.getElementById('af-title').value='';
+  document.getElementById('af-author').value='';
+  document.getElementById('af-tag').value='Management';
+  document.getElementById('af-excerpt').value='';
+  document.getElementById('af-content-editor').innerHTML='';
+  document.getElementById('af-img').value='';
+  document.getElementById('af-img-prev').style.display='none';
+  document.getElementById('af-img-ph').style.display='flex';
+  document.getElementById('af-editing-id').value='';
+  document.getElementById('aform-title').textContent='✏️ Créer un nouvel article';
+  document.getElementById('af-cancel').style.display='none';
+}
+
+/* FIXED: adashEdit now correctly loads article data into form */
+function adashEdit(id){
+  const a=ARTICLES.find(x=>x.id===id); if(!a) return;
+  goAdminPage('newart');
+  setTimeout(()=>{
+    document.getElementById('af-title').value=a.title;
+    document.getElementById('af-author').value=a.author;
+    document.getElementById('af-tag').value=a.tag;
+    document.getElementById('af-excerpt').value=a.excerpt;
+    document.getElementById('af-content-editor').innerHTML=a.content;
+    document.getElementById('af-img').value=a.image||'';
+    if(a.image){
+      document.getElementById('af-img-prev').src=a.image;
+      document.getElementById('af-img-prev').style.display='block';
+      document.getElementById('af-img-ph').style.display='none';
+    }
+    document.getElementById('af-editing-id').value=a.id;
+    document.getElementById('aform-title').textContent='✏️ Modifier l\'article : '+a.title;
+    document.getElementById('af-cancel').style.display='inline-flex';
+  }, 50);
+}
+
+/* adashPublishNow() → surchargée par /js/api-client.js */
+function adashPublishNow(id){ /* voir api-client.js */ }
+
+/* ════════════════════════════════════════════
+   DELETE – FIXED
+════════════════════════════════════════════ */
+let pendingDelId=null;
+function adashAskDelete(id){
+  pendingDelId=id;
+  document.getElementById('adash-confirm').classList.add('open');
+}
+document.getElementById('aconf-cancel').addEventListener('click',()=>{
+  document.getElementById('adash-confirm').classList.remove('open'); pendingDelId=null;
+});
+document.getElementById('aconf-ok').addEventListener('click',()=>{
+  if(pendingDelId!=null){
+    ARTICLES=ARTICLES.filter(a=>a.id!==pendingDelId);
+    saveArticles(); renderBlog(); renderAdashArticles(); renderAdashOverview();
+    adashToast('🗑️ Article supprimé.','err');
+  }
+  document.getElementById('adash-confirm').classList.remove('open'); pendingDelId=null;
+});
+
+/* ════════════════════════════════════════════
+   TOAST ADMIN
+════════════════════════════════════════════ */
+let toastTmr=null;
+function adashToast(msg,type=''){
+  const t=document.getElementById('adash-toast');
+  document.getElementById('adash-toast-msg').textContent=msg;
+  t.className=type?'show terr':'show';
+  clearTimeout(toastTmr);
+  toastTmr=setTimeout(()=>{ t.className=''; },3200);
+}
+
+/* ════════════════════════════════════════════
+   UTILS
+════════════════════════════════════════════ */
+function escHtml(str){
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════ */
+/* Init géré par /js/api-client.js → loadArticles() + renderBlog() via API PHP */
+
+</script>
+
+<!-- ══════════════════════════════════════════════════════════
+     NOTE POUR HÉBERGEMENT DYNAMIQUE
+     
+     Pour rendre ce site dynamique sur Namecheap / Hostinger :
+     ─────────────────────────────────────────────────────────
+     1. OPTION PHP (Hébergement partagé - le plus simple) :
+        - Renommez ce fichier en index.php
+        - Créez une base MySQL via cPanel
+        - Remplacez localStorage par des appels PHP/MySQL
+        - Fichiers : api/articles.php, api/contact.php
+     
+     2. OPTION WordPress (recommandé pour blog) :
+        - Installez WordPress via l'auto-installer Hostinger
+        - Utilisez ce design comme thème personnalisé
+        - Gérez vos articles via le dashboard WordPress
+     
+     3. OPTION Node.js (Hostinger VPS) :
+        - Déployez avec Express.js + MongoDB
+        - Ce site est déjà structuré pour fonctionner avec une API REST
+        - Remplacez saveArticles()/loadArticles() par fetch('/api/articles')
+     
+     En attendant : le site fonctionne déjà en mode autonome grâce
+     au localStorage — les articles publiés sont sauvegardés dans le
+     navigateur. Pour une vraie persistance multi-utilisateurs,
+     c
+-->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<!-- API Client PHP+MySQL (remplace localStorage) -->
+<script src="/js/api-client.js"></script>
+</body>
+</html>

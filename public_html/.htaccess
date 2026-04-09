@@ -1,0 +1,61 @@
+# ============================================================
+#  GROUPE JNAK SARL – Configuration Apache (.htaccess)
+#  Placez ce fichier à la RACINE de votre site
+# ============================================================
+
+# ── Sécurité générale ────────────────────────────────────────
+Options -Indexes
+ServerSignature Off
+
+# ── Protéger les fichiers sensibles ─────────────────────────
+<FilesMatch "^(database\.php|install\.sql|\.env|composer\.json)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# ── Protéger le dossier config ───────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Bloquer l'accès direct au dossier config
+    RewriteRule ^config/.*$ - [F,L]
+
+    # Rediriger HTTP → HTTPS (décommenter en production)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # API – Réécriture des URLs propres (optionnel)
+    # Exemple : /api/articles → /api/articles.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^api/([a-z]+)$ /api/$1.php [QSA,L]
+</IfModule>
+
+# ── Headers de sécurité ──────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # CORS pour l'API (ajustez le domaine en production)
+    <FilesMatch "\.php$">
+        Header always set Access-Control-Allow-Origin "*"
+        Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+        Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+    </FilesMatch>
+</IfModule>
+
+# ── Compression Gzip ─────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
+
+# ── Cache navigateur ─────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
